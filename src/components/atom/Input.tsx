@@ -10,9 +10,9 @@ interface InputType {
 
 const Input = ({ type, name, onChange, value, labelText }: InputType) => {
   return (
-    <div className="flex flex-col justify-center items-start">
+    <div className="flex flex-col justify-center items-center">
       <label
-        className="text-base tracking-tighter text-green-950"
+        className="pt-4 text-base tracking-tighter text-green-950"
         htmlFor={name}
       >
         {labelText}
