@@ -7,6 +7,9 @@ export const useInput = (initialValue: string) => {
       setValue(e.target.value);
     };
   
-    return { value, handleChange };
+    const handleTextareaChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
+      setValue(e.target.value);
+    }
+    return { value, handleChange, handleTextareaChange };
   };
   

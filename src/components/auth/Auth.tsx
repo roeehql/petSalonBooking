@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Input from "../atom/Input";
-import { useInput } from "./hooks/useInput";
+import { useInput } from "../../hooks/useInput";
 import Button from "../atom/Button";
 import { useHandleAuth } from "./hooks/useHandleAuth";
 import Toast from "../atom/Toast";

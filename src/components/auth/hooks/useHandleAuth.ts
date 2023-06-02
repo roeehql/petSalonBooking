@@ -1,6 +1,6 @@
 import {FormEvent, useState} from "react";
 import AuthApi, { AuthState } from "../../../api/authApi";
-import { handleToken } from "./utill";
+import { handleToken } from "../../../hooks/utill";
 import {useNavigate} from "react-router-dom"
 
 export const useHandleAuth = ({data, isNewAccount}:{data: AuthState , isNewAccount:boolean}) => {    
