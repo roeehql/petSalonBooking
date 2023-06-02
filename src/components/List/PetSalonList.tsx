@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { getListApi } from "../../api/getSalonListApi";
-import { SalonList } from "../../types/ListTypes";
+import React from "react";
 import SalonItem from "./SalonItem";
 import LocationList from "./LocationList";
+import { useGetSalonList } from "../../hooks/useGetSalonList";
 
 const PetSalonList = () => {
-  const [salonList, setSalonList] = useState<SalonList[]>([]);
-  const getSalonList = async () => {
-    const response = await getListApi;
-    setSalonList(response.data);
-  };
-
-  useEffect(() => {
-    getSalonList();
-  });
-
+  const { salonList } = useGetSalonList();
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-fit">
+    <div className="flex flex-col justify-center items-center w-full min-h-screen h-fit">
       <LocationList />
       <ul className=" grid grid-cols-3">
         {salonList.slice(0, 20).map((salon) => (
