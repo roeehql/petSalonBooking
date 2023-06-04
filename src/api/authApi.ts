@@ -1,12 +1,5 @@
+import { LoginState, AuthState } from "types/AuthTypes";
 import axios from "axios";
-
-export interface AuthState {
-    tel: string;
-    name: string;
-    password:string;
-}
-
-type LoginState = Pick<AuthState, "tel" | "password">
 
 export const axiosApi = axios.create({
   baseURL: "http://localhost:8080",

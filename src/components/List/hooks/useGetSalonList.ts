@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getListApi } from "../api/getSalonListApi";
-import { SalonList } from "../types/ListTypes";
+import { getListApi } from "../../../api/getSalonListApi";
+import { SalonList } from "../../../types/ListTypes";
 
 
 export const useGetSalonList = () => {
