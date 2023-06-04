@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
-import { SalonList } from '../types/ListTypes'
+import { SalonList } from 'types/ListTypes'
 
 interface SalonInfoState {
     value : SalonList

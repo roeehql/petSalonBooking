@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Input from "../atom/Input";
-import { useInput } from "../../hooks/useInput";
-import Button from "../atom/Button";
+import { useInput } from "hooks/useInput";
 import { useHandleAuth } from "./hooks/useHandleAuth";
-import Toast from "../atom/Toast";
+import Input from "components/atom/Input";
+import Button from "components/atom/Button";
+import Toast from "components/atom/Toast";
 
 const Auth = () => {
   const [isNewUser, setIsNewUser] = useState(false);
@@ -78,7 +78,14 @@ const Auth = () => {
           {isNewUser ? "이미 계정이 있습니다." : "아직 회원이 아닙니다."}
         </p>
       </form>
-      {showToast && <Toast showToast={showToast} title={resultMessage} />}
+      {showToast && (
+        <Toast
+          isSuccess={
+            resultMessage === "죄송합니다. 다시 시도해주세요." ? false : true
+          }
+          title={resultMessage}
+        />
+      )}
     </div>
   );
 };

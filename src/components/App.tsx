@@ -1,7 +1,7 @@
 import React from "react";
-import Navigation from "./header/Navigation";
-import Header from "./header/Header";
-import Router from "../routes/Router";
+import Navigation from "./menuBar/Navigation";
+import Header from "./menuBar/Header";
+import Router from "routes/Router";
 
 function App() {
   return (

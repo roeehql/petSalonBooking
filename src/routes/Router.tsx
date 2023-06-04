@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Auth from "../components/auth/Auth";
 import Home from "./Home";
-import Reservation from "../components/reservation/Reservation";
+import Auth from "components/auth/Auth";
+import Reservation from "components/reservation/Reservation";
 
 const Router = () => {
   return (

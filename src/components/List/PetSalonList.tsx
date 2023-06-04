@@ -1,7 +1,7 @@
 import React from "react";
+import { useGetSalonList } from "./hooks/useGetSalonList";
 import SalonItem from "./SalonItem";
 import LocationList from "./LocationList";
-import { useGetSalonList } from "../../hooks/useGetSalonList";
 
 const PetSalonList = () => {
   const { salonList } = useGetSalonList();

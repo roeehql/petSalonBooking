@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Input from "../atom/Input";
-import Button from "../atom/Button";
-import { useInput } from "../../hooks/useInput";
-import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { useCheckUser } from "../../hooks/useCheckUser";
+import { useInput } from "hooks/useInput";
+import { useCheckUser } from "hooks/useCheckUser";
+import { FiSearch } from "react-icons/fi";
+import Input from "components/atom/Input";
+import Button from "components/atom/Button";
 
 const Header = () => {
   const navigate = useNavigate();
