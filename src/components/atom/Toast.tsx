@@ -7,7 +7,7 @@ export interface ToastState {
   backgroundColor: string;
 }
 
-const Toast = ({ showToast, title }: { showToast: boolean; title: string }) => {
+const Toast = ({ isSuccess, title }: { isSuccess: boolean; title: string }) => {
   const [toastList, setToastList] = useState<ToastState[]>([]);
   let toastProperties = null;
 
@@ -19,8 +19,8 @@ const Toast = ({ showToast, title }: { showToast: boolean; title: string }) => {
     [toastList, setToastList]
   );
 
-  const handleToast = (showToast: boolean, title: string) => {
-    if (showToast) {
+  const handleToast = () => {
+    if (isSuccess) {
       toastProperties = {
         id: toastList.length + 1,
         title: `${title}`,
@@ -51,8 +51,8 @@ const Toast = ({ showToast, title }: { showToast: boolean; title: string }) => {
   }, [toastList, deleteToast]);
 
   useEffect(() => {
-    handleToast(showToast, title);
-  }, []);
+    handleToast();
+  });
 
   return (
     <div className="absolute bottom-4 right-4 text-base z-10">
