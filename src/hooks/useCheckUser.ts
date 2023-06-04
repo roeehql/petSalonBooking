@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { handleToken } from "./utill";
+import { handleToken } from "util/handleToken";
 
 export const useCheckUser = () => {
     const [hasToken, setHasToken] = useState(false);

@@ -1,15 +1,21 @@
 import React from "react";
-import { SalonList } from "../../types/ListTypes";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../store/hooks";
-import { setSalonInfo } from "../../store/salonInfoSlice";
+import { useAppDispatch } from "store/hooks";
+import { setSalonInfo } from "store/salonInfoSlice";
+import { handleToken } from "util/handleToken";
+import { SalonList } from "types/ListTypes";
+import Toast from "components/atom/Toast";
 
 const SalonItem = ({ item }: { item: SalonList }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const handleClick = () => {
-    dispatch(setSalonInfo(item));
-    navigate(`/list/${item.name}`);
+    if (handleToken.getToken() !== "empty") {
+      dispatch(setSalonInfo(item));
+      navigate(`/list/${item.name}`);
+    } else {
+      return <Toast isSuccess={false} title="로그인 후 시도해주세요." />;
+    }
   };
 
   return (

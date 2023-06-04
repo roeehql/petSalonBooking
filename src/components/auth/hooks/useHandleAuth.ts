@@ -1,16 +1,20 @@
 import {FormEvent, useState} from "react";
-import AuthApi, { AuthState } from "../../../api/authApi";
-import { handleToken } from "../../../hooks/utill";
+import AuthApi from "api/authApi";
+import { AuthState } from "types/AuthTypes";
+import { handleToken } from "util/handleToken";
 import {useNavigate} from "react-router-dom"
+import { useAppDispatch } from "store/hooks";
+import { setUserInfo } from "store/userInfoSlice";
 
 export const useHandleAuth = ({data, isNewAccount}:{data: AuthState , isNewAccount:boolean}) => {    
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const [resultMessage, setResultMessage] = useState("");
     const [showToast, setShowToast] = useState(false);
-    
+
     const loginUser = async () => {
         const result = await AuthApi.login({tel:data.tel ,password:data.password});
-        return {token:result.token,message:result.message}
+        return {token:result.token,message:result.message, user: result.user}
     }
     
     const handleToast = () => {
@@ -23,6 +27,7 @@ export const useHandleAuth = ({data, isNewAccount}:{data: AuthState , isNewAccou
     const setResult = (message:string,token:string) =>{
         setResultMessage(message);
         handleToken.setToken(token);
+        dispatch(setUserInfo({name: data.name, tel:data.tel}))
         handleToast();
         navigate("/")
     }
