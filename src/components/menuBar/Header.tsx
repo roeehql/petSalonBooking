@@ -5,15 +5,17 @@ import { useCheckUser } from "hooks/useCheckUser";
 import { FiSearch } from "react-icons/fi";
 import Input from "components/atom/Input";
 import Button from "components/atom/Button";
+import { useAppSelector } from "store/hooks";
 
 const Header = () => {
   const navigate = useNavigate();
+  const userInfo = useAppSelector((state) => state.userInfo.value);
   const { value: search, handleChange: handleSearchChange } = useInput("");
   const { hasToken, getUserToken } = useCheckUser();
 
   useEffect(() => {
     getUserToken();
-  }, []);
+  }, [userInfo]);
 
   return (
     <div className="fixed top-0 left-0 flex justify-evenly items-end w-full min-h-fit bg-slate-300 z-20">

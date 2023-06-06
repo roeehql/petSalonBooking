@@ -14,7 +14,8 @@ export const useHandleAuth = ({data, isNewAccount}:{data: AuthState , isNewAccou
 
     const loginUser = async () => {
         const result = await AuthApi.login({tel:data.tel ,password:data.password});
-        return {token:result.token,message:result.message, user: result.user}
+        dispatch(setUserInfo({name:result.user.name, tel:result.user.tel}))
+        return {token:result.token,message:result.message}
     }
     
     const handleToast = () => {

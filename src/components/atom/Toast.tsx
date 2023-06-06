@@ -51,7 +51,9 @@ const Toast = ({ isSuccess, title }: { isSuccess: boolean; title: string }) => {
   }, [toastList, deleteToast]);
 
   useEffect(() => {
-    handleToast();
+    if (toastList.length !== 0) {
+      handleToast();
+    }
   });
 
   return (

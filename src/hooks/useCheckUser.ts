@@ -5,7 +5,7 @@ export const useCheckUser = () => {
     const [hasToken, setHasToken] = useState(false);
 
     const getUserToken = () => {
-        if(handleToken.getToken() !== null) {
+        if(handleToken.getToken() !== "empty") {
             setHasToken(true)
         }
     }
