@@ -94,7 +94,7 @@ const Reservation = () => {
           name="pet_name"
           onChange={handlePetWeightChange}
           value={petWeight}
-          labelText="펫 몸무게"
+          labelText="펫 몸무게 (kg)"
         />
         <div className="flex flex-col justify-center items-center my-6">
           <h3 className="py-3 text-2xl text-center">추가 서비스 이용 여부</h3>

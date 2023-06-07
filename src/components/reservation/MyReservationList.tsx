@@ -4,11 +4,17 @@ import { useAppSelector } from "store/hooks";
 
 const MyReservationList = () => {
   const userInfo = useAppSelector((state) => state.userInfo.value);
-  const { userReservationList } = useGetReservation(userInfo.tel);
+  const { userReservationList, isSuccess, resultMessage } = useGetReservation(
+    userInfo.tel
+  );
 
   return (
     <div className="my-28 p-6 border-2 border-gray-300 rounded shadow">
       <h1 className="pb-6 text-3xl text-center">예약 확인</h1>
+      {!isSuccess && <TitleH text={resultMessage} />}
+      {resultMessage === "예약내역이 없습니다." && (
+        <TitleH text={resultMessage} />
+      )}
       {userReservationList.map((userReservation) => (
         <div
           key={userReservation.id}

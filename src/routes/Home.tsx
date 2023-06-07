@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "components/ad/Banner";
-import PetSalonList from "components/List/PetSalonList";
+const PetSalonList = React.lazy(() => import("components/List/PetSalonList"));
 
 const Home = () => {
   return (
