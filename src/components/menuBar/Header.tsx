@@ -1,27 +1,33 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useInput } from "hooks/useInput";
 import { useCheckUser } from "hooks/useCheckUser";
 import { FiSearch } from "react-icons/fi";
 import Input from "components/atom/Input";
 import Button from "components/atom/Button";
-import { useAppSelector } from "store/hooks";
+import { useAppDispatch } from "store/hooks";
+import { handleToken } from "util/handleToken";
+import { removeUserInfo } from "store/userInfoSlice";
 
 const Header = () => {
   const navigate = useNavigate();
-  const userInfo = useAppSelector((state) => state.userInfo.value);
+  const dispatch = useAppDispatch();
   const { value: search, handleChange: handleSearchChange } = useInput("");
-  const { hasToken, getUserToken } = useCheckUser();
+  const { hasToken } = useCheckUser();
 
-  useEffect(() => {
-    getUserToken();
-  }, [userInfo]);
+  const handleLogout = () => {
+    handleToken.clearToken();
+    dispatch(removeUserInfo());
+    navigate("/");
+  };
 
   return (
     <div className="fixed top-0 left-0 flex justify-evenly items-end w-full min-h-fit bg-slate-300 z-20">
-      <h1 className="flex justify-center items-center w-12 h-12 p-4 m-4 rounded-full bg-green-600 text-white text-3xl font-bold cursor-pointer">
-        P
-      </h1>
+      <Link to="/">
+        <h1 className="flex justify-center items-center w-12 h-12 p-4 m-4 rounded-full bg-green-600 text-white text-3xl font-bold cursor-pointer">
+          P
+        </h1>
+      </Link>
       <div className="flex justify-center items-end min-h-fit mb-4">
         <span className="py-2 px-2 text-2xl text-green-800">
           <FiSearch />
@@ -36,7 +42,14 @@ const Header = () => {
         <Button type="button" text="검색" plusStyle={"ml-2"} />
       </div>
       <div className="mb-4">
-        {!hasToken && (
+        {hasToken ? (
+          <Button
+            type="button"
+            text="로그아웃"
+            plusStyle="w-24 font-semibold"
+            onClick={handleLogout}
+          />
+        ) : (
           <Button
             type="button"
             text="로그인"

@@ -20,10 +20,13 @@ export const userInfoSlice = createSlice({
     setUserInfo: (state , action: PayloadAction<UserInfoState>) => {
       state.value = action.payload
     },
+    removeUserInfo : (state)=>{
+      state.value = initialState.value
+    }
   },
 })
 
-export const { setUserInfo } = userInfoSlice.actions
+export const { setUserInfo , removeUserInfo } = userInfoSlice.actions
 
 export const getUserInfo = (state: RootState) => state.userInfo
 
