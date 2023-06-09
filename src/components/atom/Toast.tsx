@@ -1,81 +1,39 @@
-import { useState, useCallback, useEffect } from "react";
+import React from "react";
+import { useAppDispatch } from "store/hooks";
+import { ToastSliceState, clearToast } from "store/toastSlice";
+import { TextP } from "./Text";
 
-export interface ToastState {
-  id: number;
-  title: string;
-  description: string;
-  backgroundColor: string;
-}
-
-const Toast = ({ isSuccess, title }: { isSuccess: boolean; title: string }) => {
-  const [toastList, setToastList] = useState<ToastState[]>([]);
-  let toastProperties = null;
-
-  const deleteToast = useCallback(
-    (id: number) => {
-      const toastListItem = toastList.filter((e) => e.id !== id);
-      setToastList(toastListItem);
-    },
-    [toastList, setToastList]
-  );
-
-  const handleToast = () => {
-    if (isSuccess) {
-      toastProperties = {
-        id: toastList.length + 1,
-        title: `${title}`,
-        description: "감사합니다:)",
-        backgroundColor: "#5cb85c",
-      };
-    } else {
-      toastProperties = {
-        id: toastList.length + 1,
-        title: `${title}`,
-        description: "죄송합니다. 다시 시도해주세요",
-        backgroundColor: "#d9534f",
-      };
-    }
-    setToastList([...toastList, toastProperties]);
+const Toast = ({ toast }: { toast: ToastSliceState }) => {
+  const dispatch = useAppDispatch();
+  const bgColor = {
+    success: "bg-green-400",
+    error: "bg-red-400",
+    warning: "bg-orange-400",
+    info: "bg-sky-400",
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (toastList.length) {
-        deleteToast(toastList[0].id);
-      }
-    }, 4000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [toastList, deleteToast]);
-
-  useEffect(() => {
-    if (toastList.length !== 0) {
-      handleToast();
-    }
-  });
-
   return (
-    <div className="absolute bottom-4 right-4 text-base z-10">
-      {toastList.map((toast, i) => (
-        <div
-          key={i}
-          className="w-80 h-fit bottom-4 right-4 mb-4 rounded shadow opacity-90 duration-300 hover:opacity-100 animate-toast"
-          style={{ backgroundColor: toast.backgroundColor }}
+    <div
+      className={`fixed top-16 right-4 flex flex-col justify-center items-center w-60 h-fit my-4 p-2 rounded-md shadow z-50 ${
+        bgColor[toast.type]
+      }`}
+    >
+      <div className="flex justify-between items-end w-full h-fit my-2 border-b-2 border-b-white">
+        <TextP
+          text={toast.type}
+          plusStyle={`text-white ${bgColor[toast.type]}`}
+        />
+        <button
+          className="px-3 border-none bg-transparent text-base text-white"
+          onClick={() => dispatch(clearToast(toast.id))}
         >
-          <button
-            className="w-full text-right p-3 text-white font-semibold"
-            onClick={() => deleteToast(toast.id)}
-          >
-            X
-          </button>
-          <div className="w-full py-4 px-5 bg-white">
-            <p className=" w-80 h-5 mb-2 font-bold text-base">{toast.title}</p>
-            <p className="text-right tracking-tighter">{toast.description}</p>
-          </div>
-        </div>
-      ))}
+          X
+        </button>
+      </div>
+      <TextP
+        text={toast.text}
+        plusStyle={`w-full text-white ${bgColor[toast.type]}`}
+      />
     </div>
   );
 };

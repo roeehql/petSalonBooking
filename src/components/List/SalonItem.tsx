@@ -4,17 +4,20 @@ import { useAppDispatch } from "store/hooks";
 import { setSalonInfo } from "store/salonInfoSlice";
 import { handleToken } from "util/handleToken";
 import { SalonList } from "types/ListTypes";
-import Toast from "components/atom/Toast";
+import { setToast } from "store/toastSlice";
 
 const SalonItem = ({ item }: { item: SalonList }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
   const handleClick = () => {
-    if (handleToken.getToken() !== "empty") {
+    if (handleToken.getToken() === "empty") {
+      dispatch(
+        setToast({ type: "warning", text: "로그인 후 이용하실 수 있습니다." })
+      );
+    } else {
       dispatch(setSalonInfo(item));
       navigate(`/list/${item.name}`);
-    } else {
-      return <Toast isSuccess={false} title="로그인 후 시도해주세요." />;
     }
   };
 
