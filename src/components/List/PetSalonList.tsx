@@ -3,7 +3,7 @@ import { useGetSalonList } from "./hooks/useGetSalonList";
 import SalonItem from "./SalonItem";
 import LocationList from "./LocationList";
 import { SalonList } from "types/ListTypes";
-import { TitleH } from "components/reservation/MyReservationList";
+import { TitleH } from "components/atom/Text";
 
 const PetSalonList = () => {
   const [locationCode, setLocationCode] = useState(0);

@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "components/atom/Button";
+import { TextP } from "components/atom/Text";
 
 export const OptionBox = ({
   optionTitle,
@@ -14,7 +15,7 @@ export const OptionBox = ({
 }) => {
   return (
     <div className="flex flex-col justify-center items-start w-full p-4">
-      <h4 className="text-base tracking-tight pb-2">{optionTitle}</h4>
+      <TextP text={optionTitle} plusStyle="pb-2" />
       <div className="flex justify-end w-full mr-4">
         <Button
           type="button"

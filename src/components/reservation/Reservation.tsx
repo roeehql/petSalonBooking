@@ -6,6 +6,7 @@ import Input from "components/atom/Input";
 import { useGetToday } from "./hooks/useGetToday";
 import { useHandleReservation } from "./hooks/useHandleReservation";
 import { OptionBox } from "./OptionBox";
+import { Small, TextP, TitleH } from "components/atom/Text";
 
 const Reservation = () => {
   const salonInfo = useAppSelector((state) => state.salonInfo.value);
@@ -40,17 +41,13 @@ const Reservation = () => {
       onSubmit={handleSubmit}
       className="my-28 p-6 border-2 border-gray-300 rounded shadow"
     >
-      <h1 className="pb-6 text-3xl text-center">예약페이지</h1>
-      <h1 className="pl-4 text-base tracking-tight">
-        매장명 : {salonInfo.name}
-      </h1>
+      <TitleH text="예약페이지" plusStyle="pb-4 border-b-2 border-b-gray-300" />
+      <TextP text={`매장명 : ${salonInfo.name}`} plusStyle="pl-4" />
       <div className="p-4 my-4 border-2 border-dotted border-gray-300">
-        <p className="text-base tracking-tight">위치 : {salonInfo.address}</p>
-        <p className="text-base tracking-tight">전화 : {salonInfo.tel}</p>
+        <TextP text={`위치 : ${salonInfo.address}`} />
+        <TextP text={`전화 : ${salonInfo.tel}`} />
         {salonInfo.hasCctv && (
-          <p className="text-base tracking-tight">
-            CCTV로 미용과정을 보실 수 있습니다.
-          </p>
+          <TextP text={`CCTV로 미용과정을 보실 수 있습니다.`} />
         )}
       </div>
       <div className="flex flex-col p-4">
@@ -68,7 +65,7 @@ const Reservation = () => {
           max={maxDay}
         />
       </div>
-      <h4 className="py-3 text-2xl text-center">시간 선택</h4>
+      <TitleH text="시간 선택" plusStyle="pb-2 text-center" />
       <div className="grid grid-cols-2">
         {timeList.map((time) => (
           <Button
@@ -95,10 +92,8 @@ const Reservation = () => {
         labelText="펫 몸무게 (kg)"
       />
       <div className="flex flex-col justify-center items-center my-6">
-        <h3 className="py-3 text-2xl text-center">추가 서비스 이용 여부</h3>
-        <small className="h-5 text-xs text-red-600">
-          서비스 이용에 따라 비용의 증가가 발생할 수 있습니다.
-        </small>
+        <TitleH text="추가 서비스 이용 여부" plusStyle="py-3 text-center" />
+        <Small text="서비스 이용에 따라 비용의 증가가 발생할 수 있습니다." />
         {salonInfo.canSissorCut && (
           <OptionBox
             optionTitle="가위컷 여부"

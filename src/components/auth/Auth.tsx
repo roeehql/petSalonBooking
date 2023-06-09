@@ -3,6 +3,7 @@ import { useInput } from "hooks/useInput";
 import { useHandleAuth } from "./hooks/useHandleAuth";
 import Input from "components/atom/Input";
 import Button from "components/atom/Button";
+import { Small, TextP, TitleH } from "components/atom/Text";
 
 const Auth = () => {
   const [isNewUser, setIsNewUser] = useState(false);
@@ -16,19 +17,17 @@ const Auth = () => {
   });
 
   return (
-    <div className="flex flex-col justify-around items-center w-full h-full">
-      <h1 className="p-6 text-2xl font-semibold text-green-950">
-        {isNewUser ? "회원가입" : "로그인"}
-      </h1>
+    <div className="flex flex-col justify-around items-center w-full min-h-full h-fit my-20">
+      <TitleH text={isNewUser ? "회원가입" : "로그인"} plusStyle="pb-6" />
       <form
         className="flex flex-col justify-center items-center p-8 rounded border-2 border-gray-300 shadow"
         onSubmit={handleSubmit}
       >
         {isNewUser && (
-          <h4 className="mb-8 text-center tracking-tighter text-green-950">
-            ✅예약확인을 위한 정보로 사용되니 <br />
-            정확한 정보를 입력해주세요.
-          </h4>
+          <TextP
+            text={`✅예약확인을 위한 정보로 사용되니 정확한 정보를 입력해주세요.`}
+            plusStyle="mb-8 text-center"
+          />
         )}
         {isNewUser && (
           <Input
@@ -47,9 +46,9 @@ const Auth = () => {
           labelText={"연락처를 입력해주세요"}
         />
         {isNewUser && (
-          <small className="h-5 text-xs text-red-600">
-            {phoneNumber.length > 11 && "연락처를 확인해주세요."}
-          </small>
+          <Small
+            text={phoneNumber.length > 11 ? "연락처를 확인해주세요." : ""}
+          />
         )}
         <Input
           type={"password"}
@@ -59,11 +58,13 @@ const Auth = () => {
           labelText={"비밀번호를 입력해주세요"}
         />
         {isNewUser && (
-          <small className="h-5 text-xs text-red-600">
-            {password.length > 0 &&
-              password.length < 8 &&
-              "비밀번호는 8자 이상으로 입력해주세요"}
-          </small>
+          <Small
+            text={
+              password.length > 0 && password.length < 8
+                ? "비밀번호는 8자 이상으로 입력해주세요"
+                : ""
+            }
+          />
         )}
         <Button
           type="submit"

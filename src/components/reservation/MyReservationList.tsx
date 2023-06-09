@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetReservation } from "./hooks/useGetReservation";
 import { useAppSelector } from "store/hooks";
+import { TitleH, TextP } from "components/atom/Text";
 
 const MyReservationList = () => {
   const userInfo = useAppSelector((state) => state.userInfo.value);
@@ -47,11 +48,3 @@ const MyReservationList = () => {
 };
 
 export default MyReservationList;
-
-export const TextP = ({ text }: { text: string }) => {
-  return <p className="text-base tracking-tight">{text}</p>;
-};
-
-export const TitleH = ({ text }: { text: string }) => {
-  return <h4 className="py-4 text-xl tracking-tight">{text}</h4>;
-};
