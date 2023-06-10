@@ -8,6 +8,7 @@ import Button from "components/atom/Button";
 import { useAppDispatch } from "store/hooks";
 import { handleToken } from "util/handleToken";
 import { removeUserInfo } from "store/userInfoSlice";
+import { setToast } from "store/toastSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Header = () => {
   const handleLogout = () => {
     handleToken.clearToken();
     dispatch(removeUserInfo());
+    dispatch(setToast({ type: "info", text: "로그아웃 되었습니다." }));
     navigate("/");
   };
 
