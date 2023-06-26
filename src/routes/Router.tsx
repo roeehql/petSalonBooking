@@ -7,36 +7,23 @@ import MyReservationList from "components/reservation/MyReservationList";
 import Loading from "components/atom/Loading";
 
 const Router = () => {
+  const onLoader = () => {
+    return <Loading />;
+  };
   return (
     <Routes>
-      <Route
-        path="/"
-        element={<Home />}
-        loader={() => {
-          return <Loading />;
-        }}
-      />
+      <Route path="/" element={<Home />} loader={onLoader} />
       <Route
         path="/myReservation"
         element={<MyReservationList />}
-        loader={() => {
-          return <Loading />;
-        }}
+        loader={onLoader}
       />
       <Route
         path="/list/:salonName"
         element={<Reservation />}
-        loader={() => {
-          return <Loading />;
-        }}
+        loader={onLoader}
       />
-      <Route
-        path="/auth"
-        element={<Auth />}
-        loader={() => {
-          return <Loading />;
-        }}
-      />
+      <Route path="/auth" element={<Auth />} loader={onLoader} />
     </Routes>
   );
 };

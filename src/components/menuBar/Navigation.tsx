@@ -6,19 +6,19 @@ const Navigation = () => {
   return (
     <nav className="fixed bottom-0 w-full h-fit bg-white border-t-2 border-t-lime-200">
       <ul className="flex justify-around items-center w-full h-fit">
-        <Li>
-          <Link to="/">
+        <Link to="/">
+          <Li>
             <FiHome />
-          </Link>
-        </Li>
+          </Li>
+        </Link>
         <Li>
           <FiSearch />
         </Li>
-        <Li>
-          <Link to="/myReservation">
+        <Link to="/myReservation">
+          <Li>
             <FiUser />
-          </Link>
-        </Li>
+          </Li>
+        </Link>
       </ul>
     </nav>
   );
