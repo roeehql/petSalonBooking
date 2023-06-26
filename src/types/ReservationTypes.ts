@@ -14,8 +14,10 @@ export interface ReservationState {
     pickUpService: boolean,
     createdAt : string;
     updatedAt : string;
+    confirm: boolean;
+    cancel: boolean;
   }
   
   
-export type ReservationInput = Pick<ReservationState,"name" | "tel" |"shop" | "petName" | "petWeight" | "date" | "time" | "requestMemo" | "sissorCut" | "pickUpService" | "catCut">;
+export type ReservationInput = Pick<ReservationState,"name" | "tel" |"shop" | "petName" | "petWeight" | "date" | "time" | "requestMemo" | "sissorCut" | "pickUpService" | "catCut" >;
   

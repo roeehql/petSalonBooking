@@ -8,3 +8,17 @@ export interface SalonList {
     hasCctv:boolean;
     hasPickupService:boolean;
 }
+export interface Salons{
+    id:string;
+    name:string;
+    tel: string;
+    password:string;
+    address:string
+    canSissorCut: boolean;
+    canCatCut: boolean;
+    hasCctv:boolean;
+    hasPickupService:boolean;
+}
+
+
+export type SalonInput = Pick<Salons, "tel" | "password" >
