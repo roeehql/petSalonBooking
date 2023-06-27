@@ -7,7 +7,7 @@ import { TitleH } from "components/atom/Text";
 
 const PetSalonList = () => {
   const [locationCode, setLocationCode] = useState(0);
-  const { salonList } = useGetSalonList();
+  const { salonList, salons } = useGetSalonList();
   const [selectedList, setSelectedList] = useState<SalonList[]>([]);
 
   const displaySalonList = () => {
@@ -29,6 +29,10 @@ const PetSalonList = () => {
         onSetLocationCode={(code: number) => setLocationCode(code)}
       />
       <ul className=" grid grid-cols-3">
+        {salons.map((salon) => (
+          <SalonItem key={salon.id} item={salon} />
+        ))}
+
         {selectedList.map((salon) => (
           <SalonItem key={salon.id} item={salon} />
         ))}
