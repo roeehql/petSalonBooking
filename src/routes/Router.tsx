@@ -5,6 +5,7 @@ import Auth from "components/auth/Auth";
 import Reservation from "components/reservation/Reservation";
 import MyReservationList from "components/reservation/MyReservationList";
 import Loading from "components/atom/Loading";
+import Search from "components/search/Search";
 
 const Router = () => {
   const onLoader = () => {
@@ -21,6 +22,11 @@ const Router = () => {
       <Route
         path="/list/:salonName"
         element={<Reservation />}
+        loader={onLoader}
+      />
+      <Route
+        path="/search/:searchValue"
+        element={<Search />}
         loader={onLoader}
       />
       <Route path="/auth" element={<Auth />} loader={onLoader} />

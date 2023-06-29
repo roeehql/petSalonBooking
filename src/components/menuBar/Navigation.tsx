@@ -11,9 +11,11 @@ const Navigation = () => {
             <FiHome />
           </Li>
         </Link>
-        <Li>
-          <FiSearch />
-        </Li>
+        <Link to="/search/1">
+          <Li>
+            <FiSearch />
+          </Li>
+        </Link>
         <Link to="/myReservation">
           <Li>
             <FiUser />
