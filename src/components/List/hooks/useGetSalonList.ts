@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { getListApi, salonApi } from "api/getSalonListApi";
 import { SalonList, Salons } from "types/ListTypes";
 
-
 export const useGetSalonList = () => {
     const [salonList, setSalonList] = useState<SalonList[]>([]);
     const [salons,setSalons] = useState<SalonList[]>([]);
@@ -27,8 +26,7 @@ export const useGetSalonList = () => {
   
     useEffect(() => {
       getSalonList();
-      getSalons();
     });
 
-    return {salonList , salons}
+    return {salonList , salons, getSalons}
 }

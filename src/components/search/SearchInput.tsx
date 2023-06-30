@@ -1,9 +1,9 @@
-import React from "react";
-import { useGetSalonList } from "components/List/hooks/useGetSalonList";
-import { FiSearch } from "react-icons/fi";
-import Button from "components/atom/Button";
-import { useInput } from "hooks/useInput";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useInput } from "hooks/useInput";
+import { FiSearch } from "react-icons/fi";
+import { useGetSalonList } from "components/List/hooks/useGetSalonList";
+import Button from "components/atom/Button";
 
 const SearchInput = () => {
   const navigate = useNavigate();
@@ -24,10 +24,10 @@ const SearchInput = () => {
         list="salon-info"
       />
       <datalist id="salon-info">
-        {[...salonList, ...salons].map((salon) => (
+        {[...salonList, ...salons].map((salon, i) => (
           <>
-            <option value={salon.name} />
-            <option value={salon.address} />
+            <option key={`${i}${salon.id}`} value={salon.name} />
+            <option key={`${salon.id}${i}`} value={salon.address} />
           </>
         ))}
       </datalist>
