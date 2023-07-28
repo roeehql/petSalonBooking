@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/petSalonBooking/static/css/main.fc2f5665.css",
+    "main.js": "/petSalonBooking/static/js/main.c5c38c19.js",
+    "index.html": "/petSalonBooking/index.html",
+    "main.fc2f5665.css.map": "/petSalonBooking/static/css/main.fc2f5665.css.map",
+    "main.c5c38c19.js.map": "/petSalonBooking/static/js/main.c5c38c19.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc2f5665.css",
+    "static/js/main.c5c38c19.js"
+  ]
+}
