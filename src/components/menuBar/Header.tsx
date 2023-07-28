@@ -10,11 +10,12 @@ import Button from "components/atom/Button";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { hasToken } = useCheckUser();
+  const { hasToken, getUserToken } = useCheckUser();
 
   const handleLogout = () => {
     handleToken.clearToken();
     dispatch(removeUserInfo());
+    getUserToken();
     dispatch(setToast({ type: "info", text: "로그아웃 되었습니다." }));
     navigate("/");
   };

@@ -9,7 +9,6 @@ export const getListApi = axios({
 export const salonApi = {
     getSalons : async()=>{
         const {data} = await axiosApi.get("/salons/getSalon")
-        console.log(data)
         return data
     }
 }
