@@ -4,7 +4,7 @@ import PetSalonList from "components/List/PetSalonList";
 
 const Home = () => {
   return (
-    <div>
+    <div className=" mb-28">
       <Banner />
       <PetSalonList />
     </div>
