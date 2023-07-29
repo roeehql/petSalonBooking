@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/petSalonBooking/static/css/main.fc2f5665.css",
-    "main.js": "/petSalonBooking/static/js/main.46618fb7.js",
+    "main.css": "/petSalonBooking/static/css/main.ed8e0ca8.css",
+    "main.js": "/petSalonBooking/static/js/main.0f7ab988.js",
     "index.html": "/petSalonBooking/index.html",
-    "main.fc2f5665.css.map": "/petSalonBooking/static/css/main.fc2f5665.css.map",
-    "main.46618fb7.js.map": "/petSalonBooking/static/js/main.46618fb7.js.map"
+    "main.ed8e0ca8.css.map": "/petSalonBooking/static/css/main.ed8e0ca8.css.map",
+    "main.0f7ab988.js.map": "/petSalonBooking/static/js/main.0f7ab988.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc2f5665.css",
-    "static/js/main.46618fb7.js"
+    "static/css/main.ed8e0ca8.css",
+    "static/js/main.0f7ab988.js"
   ]
 }
