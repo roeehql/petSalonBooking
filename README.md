@@ -67,7 +67,19 @@ https://github.com/roeehql/petSalonAdmin/assets/127574239/08bd971e-b14a-4c79-991
 └─util //로컬스토리지 함수
 ```
 
+<br />
+
 ### 실행
 
+[서버를 먼저 설치해주세요. https://github.com/roeehql/petSalonServer](https://github.com/roeehql/petSalonServer)
+
+<br />
+
+[배포 링크: https://roeehql.github.io/petSalonBooking/](https://roeehql.github.io/petSalonBooking/)
+
+<br />
+
+
+---
 
 # 감사합니다🍉
